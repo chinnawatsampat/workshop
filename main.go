@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"net/http"
 	"os"
 
@@ -16,10 +17,12 @@ func main() {
 	e.Use(middleware.Recover())
 
 	e.GET("/", func(c echo.Context) error {
-		return c.HTML(http.StatusOK, "Hello, Docker! <3")
+		TOKEN_SECRET := os.Getenv("TOKEN_SECRET")
+		return c.HTML(http.StatusOK, fmt.Sprintf("Hello, Docker! <3 TOKEN_SECRET= %v", TOKEN_SECRET))
 	})
 
 	e.GET("/ping", func(c echo.Context) error {
+
 		return c.JSON(http.StatusOK, struct{ Status string }{Status: "OK"})
 	})
 
