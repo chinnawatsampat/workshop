@@ -22,7 +22,7 @@ steps:
       - '--platform=managed'
       - '--image=$_GCR_HOSTNAME/$PROJECT_ID/$_SERVICE_NAME:$BRANCH_NAME'
       - '--region=$_DEPLOY_REGION'
-      - '--set-env-vars=TOKEN_SECRET=_TOKEN_SECRET'
+      - '--set-env-vars=TOKEN_SECRET=$_TOKEN_SECRET'
       - '--min-instances=0'
       - '--quiet'
     id: Deploy
